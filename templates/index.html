@@ -1,0 +1,55 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Email Detector</title>
+</head>
+<body>
+    <h2>Spam Email Detector</h2>
+    <form action="/predict" method="post">
+        <textarea name="email_text" rows="5" cols="50" placeholder="Enter email content here..."></textarea><br>
+        <button type="submit">Check Spam</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Email Spam Detector</h2>
+        <form action="/" method="post">
+            <div class="mb-3">
+                <label for="emailText" class="form-label">Enter Email Text</label>
+                <textarea class="form-control" id="emailText" name="email_text" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Check for Spam</button>
+        </form>
+        {% if prediction is not none %}
+        <div class="alert mt-4 {{ 'alert-danger' if prediction == 'Spam' else 'alert-success' }}">
+            <strong>Result:</strong> This email is <strong>{{ prediction }}</strong>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
